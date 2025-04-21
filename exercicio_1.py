@@ -82,8 +82,8 @@ def calcular_frequencia_texto(texto):
     return distribuicao
 
 def ataque_frequencia(texto):
-    print("\nAtaque por Frequência:")
-    menor_erro = float('inf')
+    print("Ataque por Frequência:")
+    menor_erro = 1000000.00
     melhor_chave = None
     melhor_tentativa = ""
     
@@ -91,21 +91,19 @@ def ataque_frequencia(texto):
         tentativa = decifrar(texto, chave)
         freq_tentativa = calcular_frequencia_texto(tentativa)
         
-        # Cálculo do erro entre a frequência do texto e a da língua portuguesa
         erro = 0
         for letra in frequencia:
             erro += abs(frequencia[letra] - freq_tentativa.get(letra, 0))
         
-        print(f"Chave {chave} → Erro total: {erro:.2f}")
+        print(f"Chave {chave} → Erro total: {erro:.1f}")
         
         if erro < menor_erro:
             menor_erro = erro
             melhor_chave = chave
             melhor_tentativa = tentativa
 
-    print(f"\n🔑 Melhor estimativa de chave: {melhor_chave}")
-    print(f"📝 Texto decifrado com essa chave: {melhor_tentativa}")
-    return melhor_chave, melhor_tentativa
+    print(f"Melhor chave: {melhor_chave}")
+    print(f"Texto decifrado: {melhor_tentativa}")
 
 
 ataque_frequencia(texto_cifrado)
