@@ -95,7 +95,7 @@ def ataque_frequencia(texto):
         for letra in frequencia:
             erro += abs(frequencia[letra] - freq_tentativa.get(letra, 0))
         
-        print(f"Chave {chave} → Erro total: {erro:.1f}")
+        print(f"Chave {chave} → Erro total: {erro:.2f}")
         
         if erro < menor_erro:
             menor_erro = erro
